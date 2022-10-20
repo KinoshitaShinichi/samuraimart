@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    // マイページ画面へ
     public function mypage()
     {
         $user = Auth::user();
@@ -19,6 +21,7 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
+    //情報編集画面へ
     public function edit(User $user)
     {
         $user = Auth::user();
@@ -32,6 +35,7 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
+    // 情報更新機能
     public function update(Request $request, User $user)
     {
         $user = Auth::user();
@@ -46,6 +50,7 @@ class UserController extends Controller
          return redirect()->route('mypage');
     }
 
+    //お届け先変更画面へ
     public function edit_address()
     {
         $user = Auth::user();
@@ -53,11 +58,13 @@ class UserController extends Controller
         return view('users.edit_address', compact('user'));
     }
 
+    // パスワード変更画面へ
     public function edit_password()
     {
         return view('users.edit_password');
     }
 
+    // パスワード変更機能
     public function update_password(Request $request)
     {
         $user = Auth::user();
@@ -70,6 +77,17 @@ class UserController extends Controller
         }
 
         return redirect()->route('mypage');
+    }
+
+// お気に入り表示画面へ
+    public function favorite()
+    {
+        $user = Auth::user();
+
+        // お気に入りしたものの情報取得
+        $favorites = $user->favorites(Product::class)->get();
+
+        return view('users.favorite', compact('favorites'));
     }
 
 }
