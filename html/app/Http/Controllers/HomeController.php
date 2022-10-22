@@ -11,7 +11,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct()//必ず実行される、web.phpは影響されない
     {
         $this->middleware('auth');
     }

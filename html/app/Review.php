@@ -12,6 +12,6 @@ class Review extends Model
     }
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User');//たとえ100個のレビューがあっても、1つのレビューを主として考える。そうするとユーザーは1人しかいない＝belongsTo
     }
 }

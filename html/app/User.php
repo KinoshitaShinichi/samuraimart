@@ -44,7 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail //implements=イ�
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime',//DBのカラムの型指定
     ];
 
     public function reviews()
