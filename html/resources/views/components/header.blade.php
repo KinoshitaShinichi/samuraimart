@@ -2,9 +2,10 @@
     <a class="navbar-brand" href="{{ url('/') }}">
         <img src="{{asset('img/logo.jpg')}}">
     </a>
-    <form class="form-inline">
+    <form method="GET" action="{{ route('products.index') }}" class="form-inline">
         <div class="form-group">
-            <input class="form-control samuraimart-header-search-input">
+            <input type="search" class="form-control samuraimart-header-search-input"
+            placeholder="検索したい商品を入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
         </div>
         <div class="input-group">
             <button type="submit" class="btn samuraimart-header-search-button"><i class="fas fa-search samuraimart-header-search-icon"></i></button>
