@@ -36,6 +36,10 @@ Route::get('users/mypage/password/edit', 'UserController@edit_password')->name('
 Route::put('users/mypage/password', 'UserController@update_password')->name('mypage.update_password');
 // ↑パスワード編集ルート
 
+// ↓ユーザー側削除ルート
+Route::delete('users/mypage/delete', 'UserController@destroy')->name('mypage.destroy');
+
+
 // ↓レビュー送信ルート(画面は商品画面productの方)
 Route::post('products/{product}/reviews', 'ReviewController@store');
 

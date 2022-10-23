@@ -240,3 +240,8 @@
   .w-80 {
     width: 80%!important;
   }
+
+  .samuraimart-delete-submit-button {
+    border-radius: 2px;
+    background-color: #d94b0e;
+  }
