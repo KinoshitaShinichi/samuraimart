@@ -10,4 +10,8 @@ class Category extends Model
     {
         return $this->hasMany('App\Product');
     }
+    public function major_category()
+    {
+        return $this->belongsTo('App\MajorCategory');
+    }
 }
