@@ -60,7 +60,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth:admins');
 
 //????
-Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'auth:admins'], function () {
     Route::get('login', 'Dashboard\Auth\LoginController@showLoginForm')->name('login');
     Route::post('login', 'Dashboard\Auth\LoginController@login')->name('login');
     Route::resource('categories', 'Dashboard\CategoryController')->middleware('auth:admins');
@@ -68,4 +68,6 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::resource('products', 'Dashboard\ProductController')->middleware('auth:admins');
     Route::resource('users', 'Dashboard\UserController')->middleware('auth:admins');
     Route::get('orders', 'Dashboard\OrderController@index')->middleware('auth:admins');
+    Route::get('products/import/csv', 'Dashboard\ProductController@import')->name('products.import_csv')->middleware('auth:admins');
+    Route::post('products/import/csv', 'Dashboard\ProductController@import_csv')->middleware('auth:admins');
 });
