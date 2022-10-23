@@ -24,7 +24,7 @@
             @foreach ($cart as $product)
             <div class="col-md-2 mt-2">
                 <a href="{{route('products.show', $product->id)}}">
-                    <img src="{{ asset('img/dummy.png')}}" class="img-fluid w-100">
+                    <img src="{{ asset('img/dummy2.jpg')}}" class="img-fluid w-100">
                 </a>
             </div>
             <div class="col-md-6 mt-4">
@@ -34,7 +34,11 @@
                 <h3 class="w-100 mt-4">{{$product->qty}}</h3>
             </div>
             <div class="col-md-2">
+                @if ($product->options->carriage)
+                <h3 class="w-100 mt-4">￥{{$product->qty * ($product->price + env('CARRIAGE'))}}</h3>
+                @else
                 <h3 class="w-100 mt-4">￥{{$product->qty * $product->price}}</h3>
+                @endif
             </div>
             @endforeach
         </div>

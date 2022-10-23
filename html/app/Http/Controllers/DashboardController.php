@@ -18,7 +18,7 @@ class DashboardController extends Controller
         } else {
             $billings = ShoppingCart::getDailyBllings();
         }
-        $total = count($billings);
+        $total = count($billings);//ここがおかしい、ddすると1になり、$billingsを代入すると配列のcount3になる。
         $paginator = new LengthAwarePaginator(array_slice($billings, ($page - 1), 15), $total, 15, $page, ['path' => 'dashboard']);
 
         return view('dashboard.index', compact('billings', 'total', 'paginator', 'sort'));

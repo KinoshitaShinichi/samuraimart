@@ -2,13 +2,23 @@
 
 @section('content')
 <div class="w-75">
-
+    {{-- ↓教材、これだと日別月別ともに１件にしかならない --}}
     @if($sort == 'month')
-        <h1>月別売上 {{ $total }} 件</h1>
+    <h1>月別売上 {{ $total }} 件</h1>
     @else
         <h1>日別売上 {{ $total }} 件</h1>
     @endif
+{{-- ↑教材、これだと日別月別ともに１件にしかならない --}}
 
+{{-- ↓自分で作成したものだと３件になる。 --}}
+
+    {{-- @foreach($paginator as $billing)
+    @if($sort == 'month')
+        <h1>月別売上 {{ $billing['count']}} 件</h1>
+    @else
+        <h1>日別売上 {{ $billing['count']}} 件</h1>
+    @endif
+    @endforeach --}}
     <form method="GET" action="/dashboard" class="form-inline">
         切り替え
         <select name="sort" onChange="this.form.submit();" class="form-inline ml-2">
