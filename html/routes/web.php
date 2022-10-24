@@ -39,6 +39,9 @@ Route::put('users/mypage/password', 'UserController@update_password')->name('myp
 // ↓ユーザー側削除ルート
 Route::delete('users/mypage/delete', 'UserController@destroy')->name('mypage.destroy');
 
+// ↓注文履歴ルート
+Route::get('users/mypage/cart_history', 'UserController@cart_history_index')->name('mypage.cart_history');
+Route::get('users/mypage/cart_history/{num}', 'UserController@cart_history_show')->name('mypage.cart_history_show');
 
 // ↓レビュー送信ルート(画面は商品画面productの方)
 Route::post('products/{product}/reviews', 'ReviewController@store');
@@ -60,9 +63,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'DashboardController@index')->middleware('auth:admins');
 
 //????
-Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'auth:admins'], function () {
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
     Route::get('login', 'Dashboard\Auth\LoginController@showLoginForm')->name('login');
     Route::post('login', 'Dashboard\Auth\LoginController@login')->name('login');
+});
+
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'auth:admins'], function () {
     Route::resource('categories', 'Dashboard\CategoryController')->middleware('auth:admins');
     Route::resource('major_categories', 'Dashboard\MajorCategoryController')->middleware('auth:admins');
     Route::resource('products', 'Dashboard\ProductController')->middleware('auth:admins');

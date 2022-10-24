@@ -9,7 +9,7 @@ use Kyslik\ColumnSortable\Sortable;
 class Product extends Model
 {
     use Favoriteable,Sortable;
-    
+
     public $sortable = [
         'price',
         'updated_at'
@@ -24,4 +24,5 @@ class Product extends Model
     {
         return $this->hasMany('App\Review');
     }
+    
 }
