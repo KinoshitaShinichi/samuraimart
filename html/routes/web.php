@@ -43,6 +43,10 @@ Route::delete('users/mypage/delete', 'UserController@destroy')->name('mypage.des
 Route::get('users/mypage/cart_history', 'UserController@cart_history_index')->name('mypage.cart_history');
 Route::get('users/mypage/cart_history/{num}', 'UserController@cart_history_show')->name('mypage.cart_history_show');
 
+// ↓クレジットカード登録ルート
+Route::get('users/mypage/register_card', 'UserController@register_card')->name('mypage.register_card');
+Route::post('users/mypage/token', 'UserController@token')->name('mypage.token');
+
 // ↓レビュー送信ルート(画面は商品画面productの方)
 Route::post('products/{product}/reviews', 'ReviewController@store');
 

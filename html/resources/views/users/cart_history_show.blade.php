@@ -82,23 +82,18 @@
                             送料
                         </div>
                         <div class="col-10 mt-2">
-                            @if ($product->carriage_flag)
+                            @if ($product->options->carriage)
+                            {{-- @if ($product->carriage_flag) --}}
                                 ￥{{$product->qty * 800}}
                             @else
                                 ￥0
                             @endif
                         </div>
-
                         <div class="col-2 mt-2">
                             合計
                         </div>
                         <div class="col-10 mt-2">
-                            {{--多分教材逆？ @if ($product->carriage_flag)
-                                ￥{{$product->qty * $product->price}}
-                            @else
-                                ￥{{$product->qty * ($product->price + 800)}}
-                            @endif --}}
-                            @if ($product->carriage_flag)
+                            @if ($product->options->carriage)
                                 ￥{{$product->qty * ($product->price + 800)}}
                             @else
                                 ￥{{$product->qty * $product->price}}

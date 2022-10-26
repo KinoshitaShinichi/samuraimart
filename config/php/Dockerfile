@@ -12,12 +12,15 @@ RUN /bin/sh -c a2enmod rewrite
 
 # Install
 RUN apt-get update
+RUN apt-get install -y libzip-dev libpng-dev && docker-php-ext-install zip gd 
+#↑追加
 RUN apt-get install -y libonig-dev
 RUN apt-get install -y zip
 RUN apt-get install -y git
 RUN apt-get install -y curl
 RUN apt-get install wget
 RUN apt-get clean
+
 
 # composer
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
