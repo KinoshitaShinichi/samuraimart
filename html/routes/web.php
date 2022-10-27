@@ -81,3 +81,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.','middleware' => 'aut
     Route::get('products/import/csv', 'Dashboard\ProductController@import')->name('products.import_csv')->middleware('auth:admins');
     Route::post('products/import/csv', 'Dashboard\ProductController@import_csv')->middleware('auth:admins');
 });
+
+if (env('APP_ENV') === 'production') {
+    URL::forceScheme('https');
+}
